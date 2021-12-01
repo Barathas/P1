@@ -30,8 +30,8 @@ int main(){
 
     modify_config(minerals, scan, x);
         //config_update(scan);
-        return 0;
+    calculate(minerals);
 
+    return 0;
 
-    calculate(minerals[20]);
 }
