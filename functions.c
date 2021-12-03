@@ -52,23 +52,24 @@ void modify_config(struct input minerals[20], int x, char scan) {
     }
 }
 
-void calculate(struct input minerals[20]){
+void calculate(struct input minerals[20]) {
     for (int i = 0; i < 4; i++) {
-        if (minerals[i].measured_value < 0){
+        if (minerals[i].measured_value < 0) {
             printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
         } else {
-            float difference = minerals[i].limit_of_mineral - minerals[i].measured_value;
-            if (difference < 0) {
-                printf("Too many minerals. Water needs to be replaced!\n");
-            } else if (difference == 0) {
-                printf("Nothing needs to be added\n");
-            } else {
-                printf("%f needs to be added\n", difference);
-            }
-        } return;
-    } 
-}
+            minerals[i].calculated_value = minerals[i].limit_of_mineral - minerals[i].measured_value;
+            if (minerals[i].calculated_value < 0) {
+                printf("%f, Too many minerals. Water needs to be replaced!\n", minerals[i].calculated_value);
 
+            } else if (minerals[i].calculated_value == 0) {
+                printf("Nothing needs to be added\n");
+
+            } else {
+                printf("%f needs to be added\n", minerals[i].calculated_value);
+            }
+        }
+    }
+}
 void compareFile(struct input minerals[20]) {
     FILE *pt1 = fopen("config.csv", "r");
 
@@ -118,4 +119,19 @@ void compareFile(struct input minerals[20]) {
     }
 }
 
-//Hello Anna
+void data_to_file(struct input minerals[20]) {
+    FILE *fpt;
+    fpt = fopen("calculated_data.csv", "w+");
+    fprintf(fpt, "Name; ");
+    for (int i = 0; i < 4; i++) {
+        fprintf(fpt, "%s;", minerals[i].name);
+    } fprintf(fpt, "\n Measured values; ");
+    for (int i = 0; i < 4; i++) {
+        fprintf(fpt, "%f;", minerals[i].measured_value);
+    } fprintf(fpt, "\n Added values; ");
+    for (int i = 0; i < 4; i++) {
+        fprintf(fpt, "%f;", minerals[i].calculated_value);
+    } fprintf(fpt, "\n");
+    fclose(fpt);
+}
+
