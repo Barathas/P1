@@ -14,5 +14,5 @@ void data_setup (char scan);
 void config_update(char scan);
 void modify_config(struct input minerals[20], int x, char scan);
 void calculate(struct input minerals[20]);
-
+void compareFile(struct input minerals[20]);
 

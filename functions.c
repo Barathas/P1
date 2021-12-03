@@ -3,7 +3,10 @@
 //
 
 #include "functions.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
 typedef struct input mineral;
 
 void data_setup(char scan) {
@@ -64,4 +67,53 @@ void calculate(struct minerals[20]){
             }
         } return;
     } 
+}
+
+void compareFile(struct input minerals[20]) {
+    FILE *pt1 = fopen("config.csv", "r");
+
+    int x = 0;
+    int y = 0;
+
+    if (!pt1)
+        printf("Can't open file 1\n");
+    else {
+        // Here we have taken size of
+        // array 1024 you can modify it
+        char buffer[1024];
+        int row = 0;
+        int column = 0;
+        int i = 0;
+        char name[10];
+        while (fgets(buffer, 1024, pt1)) {
+            column = 0;
+            row++;
+            int i = 0;
+            // To avoid printing of column
+            // names in file can be changed
+            // according to need
+
+            // Splitting the data
+            char *value = strtok(buffer, ";");
+
+            if (row == 1) {
+                while (value) {
+                    strcpy(minerals[i++].name, value);
+                    value = strtok(NULL, ";");
+                    x = i - 1;
+                }
+                printf("%s %d", name, x);
+            }
+            if (row == 2) {
+                while (value) {
+                    strcpy(name, value);
+                    minerals[i++].measured_value = atof(name);
+                    value = strtok(NULL, ";");
+                }
+            }
+        }
+
+        // Close the file
+        fclose(pt1);
+    }
 }
