@@ -118,4 +118,4 @@ void compareFile(struct input minerals[20]) {
     }
 }
 
-edklm
+//Hello Anna
