@@ -10,7 +10,7 @@ int main(){
     data_setup(scan);
     int x = 0;
 
-    mineral minerals[20];
+    struct input minerals[20];
 
     strcpy(minerals[0].name, "phosphorus");
     minerals[0].limit_of_mineral = 2;
