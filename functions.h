@@ -7,8 +7,6 @@ struct input {
     float measured_value; //measured value of the mineral in mg/l
 };
 
-typedef struct input mineral;
-
 void config_setup(char scan);
 void data_setup (char scan);
 void config_update(char scan);

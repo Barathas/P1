@@ -32,6 +32,7 @@ int main(){
         //config_update(scan);
     calculate(minerals);
 
+    compareFile(minerals);
     return 0;
 
 }

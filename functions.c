@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
-typedef struct input mineral;
+typedef struct input minerals;
 
 void data_setup(char scan) {
     FILE *data = fopen("data.csv", "r+");
@@ -34,7 +34,7 @@ void config_setup(char scan) {
     }
 }
 
-void modify_config(struct input minerals, int x, char scan) {
+void modify_config(struct input minerals[20], int x, char scan) {
     FILE *config = fopen("config.csv", "r+");
     printf("Do you want to modify the limit values? Y/n\n");
     scanf(" %c", &scan);
@@ -52,7 +52,7 @@ void modify_config(struct input minerals, int x, char scan) {
     }
 }
 
-void calculate(struct minerals[20]){
+void calculate(struct input minerals[20]){
     for (int i = 0; i < 4; i++) {
         if (minerals[i].measured_value < 0){
             printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
