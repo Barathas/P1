@@ -117,3 +117,5 @@ void compareFile(struct input minerals[20]) {
         fclose(pt1);
     }
 }
+
+edklm
