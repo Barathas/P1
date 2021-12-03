@@ -51,7 +51,7 @@ void calculate(struct input minerals[20]) {
         if (minerals[i].measured_value < 0) {
             printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
         } else {
-            minerals[i].calculated_value = minerals[i].limit_of_mineral - minerals[i].measured_value;
+            minerals[i].calculated_value = minerals[i].limit_value - minerals[i].measured_value;
             if (minerals[i].calculated_value < 0) {
                 printf("%f, Too many minerals. Water needs to be replaced!\n", minerals[i].calculated_value);
 
@@ -109,7 +109,7 @@ void data_to_file(struct input minerals[20]) {
     fpt = fopen("calculated_data.csv", "w+");
     fprintf(fpt, "Name; ");
     for (int i = 0; i < 4; i++) {
-        fprintf(fpt, "%s;", minerals[i].name);
+        fprintf(fpt, "%s;", minerals[i].measured_name);
     } fprintf(fpt, "\n Measured values; ");
     for (int i = 0; i < 4; i++) {
         fprintf(fpt, "%f;", minerals[i].measured_value);
