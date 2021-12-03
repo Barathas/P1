@@ -1,18 +1,19 @@
-//
-// Created by Andreas Hansen on 01-12-2021.
-//
-struct input {
-    char name[50]; //name of mineral
-    float limit_of_mineral; //limit of the mineral in mg/l
-    float measured_value; //measured value of the mineral in mg/l
+struct input{
+    char measured_name[50]; //Mineral name for the measured value
+    float measured_value; //Measured value of the mineral in mg/l
+    char limit_name[50];//Mineral name for the limit value
+    float limit_value; //limit of the mineral in mg/l
+    float calculated_value;
     float calculated_value;
 };
+typedef struct input mineral;
 
 void config_setup(char scan);
 void data_setup (char scan);
 void config_update(char scan);
-void modify_config(struct input minerals[20], int x, char scan);
+void modify_config(struct input minerals[20], int data_width, char scan, float y);
 void calculate(struct input minerals[20]);
-void compareFile(struct input minerals[20]);
+void load_data(struct input minerals[20],int data_width);
+void load_config(struct input minerals[20],int config_width);
 void data_to_file(struct input minerals[20]);
 

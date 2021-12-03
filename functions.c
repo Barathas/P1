@@ -1,13 +1,7 @@
-//
-// Created by Andreas Hansen on 01-12-2021.
-//
-
 #include "functions.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #include <string.h>
-typedef struct input minerals;
 
 void data_setup(char scan) {
     FILE *data = fopen("data.csv", "r+");
@@ -34,20 +28,20 @@ void config_setup(char scan) {
     }
 }
 
-void modify_config(struct input minerals[20], int x, char scan) {
+void modify_config(struct input minerals[20], int data_width, char scan, float y) {
     FILE *config = fopen("config.csv", "r+");
     printf("Do you want to modify the limit values? Y/n\n");
     scanf(" %c", &scan);
     if (scan == 'y' || scan == 'Y') {
         fopen("config.csv", "w+");
         for (int i = 0; i < 4; i++) {
-            fprintf(config, "%s;", minerals[i].name);
+            fprintf(config, "%s;", minerals[i].measured_name);
         }
         fprintf(config, "\n");
         for (int i = 0; i < 4; i++) {
-            printf("What shall the limit of %s be?\n", minerals[i].name);
-            scanf(" %d", &x);
-            fprintf(config, "%d;", x);
+            printf("What shall the limit of %s be?\n", minerals[i].measured_name);
+            scanf(" %f", &y);
+            fprintf(config, "%f;", y);
         }
     }
 }
@@ -70,11 +64,8 @@ void calculate(struct input minerals[20]) {
         }
     }
 }
-void compareFile(struct input minerals[20]) {
+void load_data(struct input minerals[20],int data_width) {
     FILE *pt1 = fopen("config.csv", "r");
-
-    int x = 0;
-    int y = 0;
 
     if (!pt1)
         printf("Can't open file 1\n");
@@ -83,27 +74,22 @@ void compareFile(struct input minerals[20]) {
         // array 1024 you can modify it
         char buffer[1024];
         int row = 0;
-        int column = 0;
-        int i = 0;
         char name[10];
         while (fgets(buffer, 1024, pt1)) {
-            column = 0;
             row++;
             int i = 0;
             // To avoid printing of column
             // names in file can be changed
             // according to need
-
             // Splitting the data
             char *value = strtok(buffer, ";");
 
             if (row == 1) {
                 while (value) {
-                    strcpy(minerals[i++].name, value);
-                    value = strtok(NULL, ";"); // HEllo
-                    x = i - 1;
+                    strcpy(minerals[i++].measured_name, value);
+                    value = strtok(NULL, ";");
+                    data_width = i - 1;
                 }
-                printf("%s %d", name, x);
             }
             if (row == 2) {
                 while (value) {
@@ -113,7 +99,6 @@ void compareFile(struct input minerals[20]) {
                 }
             }
         }
-
         // Close the file
         fclose(pt1);
     }
