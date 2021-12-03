@@ -99,7 +99,7 @@ void compareFile(struct input minerals[20]) {
             if (row == 1) {
                 while (value) {
                     strcpy(minerals[i++].name, value);
-                    value = strtok(NULL, ";");
+                    value = strtok(NULL, ";"); // HEllo
                     x = i - 1;
                 }
                 printf("%s %d", name, x);
