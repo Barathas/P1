@@ -1,9 +1,8 @@
 #include "functions.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void data_setup(char scan) {
+#include <time.h>
+void data_setup() {
+    char scan = 0;
     FILE *data = fopen("data.csv", "r+");
     if (!data) {
         printf("Can't open data.csv\n");
@@ -15,7 +14,8 @@ void data_setup(char scan) {
         }
     }
 }
-void config_setup(char scan) {
+void config_setup() {
+    char scan = 0;
     FILE *config = fopen("config.csv", "r+");
     if (!config) {
         printf("Can't open config.csv\n");
@@ -28,95 +28,73 @@ void config_setup(char scan) {
     }
 }
 
-void modify_config(struct input minerals[20], int data_width, char scan, float y) {
+void modify_config(struct input minerals[20], int data_width) {
+    char char_scan = 0;
+    float float_scan = 0;
     FILE *config = fopen("config.csv", "r+");
     printf("Do you want to modify the limit values? Y/n\n");
-    scanf(" %c", &scan);
-    if (scan == 'y' || scan == 'Y') {
+    scanf(" %c", &char_scan);
+    if (char_scan == 'y' || char_scan == 'Y') {
         fopen("config.csv", "w+");
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < data_width; i++) {
             fprintf(config, "%s;", minerals[i].measured_name);
         }
         fprintf(config, "\n");
-        for (int i = 0; i < 4; i++) {
-            printf("What shall the limit of %s be?\n", minerals[i].measured_name);
-            scanf(" %f", &y);
-            fprintf(config, "%f;", y);
+        for (int i = 0; i < data_width; i++) {
+            printf("What shall the limit of %s be in mg/l?\n", minerals[i].measured_name);
+            scanf(" %f", &float_scan);
+            fprintf(config, "%f;", float_scan);
         }
     }
+    fclose(config);
 }
 
-void calculate(struct input minerals[20]) {
-    for (int i = 0; i < 4; i++) {
-        if (minerals[i].measured_value < 0) {
+float calculate(float measured_value, float limit_value) {
+    float calculated_value = 0;
+    calculated_value = limit_value - measured_value;
+        if (measured_value < 0) {
             printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
-        } else {
-            minerals[i].calculated_value = minerals[i].limit_value - minerals[i].measured_value;
-            if (minerals[i].calculated_value < 0) {
-                printf("%f, Too many minerals. Water needs to be replaced!\n", minerals[i].calculated_value);
-
-            } else if (minerals[i].calculated_value == 0) {
+        } /*else {
+            if (calculated_value < 0) {
+                printf("%f, Too many minerals. Water needs to be replaced!\n", calculated_value);
+            } else if (calculated_value == 0) {
                 printf("Nothing needs to be added\n");
-
             } else {
-                printf("%f needs to be added\n", minerals[i].calculated_value);
+                printf("%f needs to be added\n", calculated_value);
             }
-        }
-    }
-}
-void load_data(struct input minerals[20],int data_width) {
-    FILE *pt1 = fopen("config.csv", "r");
-
-    if (!pt1)
-        printf("Can't open file 1\n");
-    else {
-        // Here we have taken size of
-        // array 1024 you can modify it
-        char buffer[1024];
-        int row = 0;
-        char name[10];
-        while (fgets(buffer, 1024, pt1)) {
-            row++;
-            int i = 0;
-            // To avoid printing of column
-            // names in file can be changed
-            // according to need
-            // Splitting the data
-            char *value = strtok(buffer, ";");
-
-            if (row == 1) {
-                while (value) {
-                    strcpy(minerals[i++].measured_name, value);
-                    value = strtok(NULL, ";");
-                    data_width = i - 1;
-                }
-            }
-            if (row == 2) {
-                while (value) {
-                    strcpy(name, value);
-                    minerals[i++].measured_value = atof(name);
-                    value = strtok(NULL, ";");
-                }
-            }
-        }
-        // Close the file
-        fclose(pt1);
-    }
+        }*/
+    return calculated_value;
 }
 
-void data_to_file(struct input minerals[20]) {
-    FILE *fpt;
-    fpt = fopen("calculated_data.csv", "w+");
+void data_to_file(struct input minerals[20], int data_width) {
+    FILE *fpt = fopen("calculated_data.csv", "w+");
     fprintf(fpt, "Name; ");
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < data_width; i++) {
         fprintf(fpt, "%s;", minerals[i].measured_name);
-    } fprintf(fpt, "\n Measured values; ");
-    for (int i = 0; i < 4; i++) {
+    } fprintf(fpt, "\nMeasured values; ");
+    for (int i = 0; i < data_width; i++) {
         fprintf(fpt, "%f;", minerals[i].measured_value);
-    } fprintf(fpt, "\n Added values; ");
-    for (int i = 0; i < 4; i++) {
+    } fprintf(fpt, "\nAdded values; ");
+    for (int i = 0; i < data_width; i++) {
         fprintf(fpt, "%f;", minerals[i].calculated_value);
     } fprintf(fpt, "\n");
     fclose(fpt);
 }
-
+void logfile_update(struct input minerals[20], int data_width){
+    FILE *logfile = fopen("logfile.txt", "a");
+    time_t raw_time;
+    struct tm * time_info;
+    time ( &raw_time );
+    time_info = localtime ( &raw_time );
+    fprintf(logfile, "%s(", asctime (time_info));
+    for (int i = 0; i < data_width; i++) {
+        fprintf(logfile, "%s,",minerals[i].measured_name);
+    } fprintf(logfile, "|Measured values,");
+    for (int i = 0; i < data_width; i++) {
+        fprintf(logfile, "%f,", minerals[i].measured_value);
+    } fprintf(logfile, "|Added values,");
+    for (int i = 0; i < data_width; i++) {
+        fprintf(logfile, "%f,", minerals[i].calculated_value);
+    }fprintf(logfile, ")\n");
+    fclose(logfile);
+}
