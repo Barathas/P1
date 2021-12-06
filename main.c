@@ -2,6 +2,7 @@
 #include <string.h>
 #include "functions.h"
 #include <stdlib.h>
+#include "menu.h"
 
 int main(){
     config_setup();
@@ -9,6 +10,7 @@ int main(){
     int data_width = 0;
     int config_width = 0;
     mineral minerals[20];
+    int produce = interface();
     FILE *pt1 = fopen("data.csv", "r");
     if (!pt1)
         printf("Can't open file \n");
@@ -69,16 +71,13 @@ int main(){
         return 0;
     }
     //config_update(scan);
-    printf("int %d\n",data_width);
+    //printf("int %d\n",data_width);
     for (int i = 0; i < data_width; i++) {
         //printf("test %f\n",minerals[i].measured_value);
         minerals[i].calculated_value = calculate(minerals[i].measured_value, minerals[i].limit_value);
         //printf("Calculated %f\n",minerals[i].calculated_value);
     }
-
     data_to_file(minerals, data_width);
     logfile_update(minerals, data_width);
-
-
     return 0;
 }

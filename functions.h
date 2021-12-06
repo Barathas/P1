@@ -1,3 +1,7 @@
+#ifndef P1_FUNCTIONS_H
+#define P1_FUNCTIONS_H
+
+
 struct input{
     char measured_name[50]; //Mineral name for the measured value
     float measured_value; //Measured value of the mineral in mg/l
@@ -16,4 +20,4 @@ void load_config(struct input minerals[20],int config_width);
 void data_to_file(struct input minerals[20], int data_width);
 void logfile_update(struct input minerals[20], int data_width);
 
-
+#endif //P1_MENU_H

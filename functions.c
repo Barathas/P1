@@ -27,7 +27,6 @@ void config_setup() {
         }
     }
 }
-
 void modify_config(struct input minerals[20], int data_width) {
     char char_scan = 0;
     float float_scan = 0;
@@ -48,24 +47,22 @@ void modify_config(struct input minerals[20], int data_width) {
     }
     fclose(config);
 }
-
 float calculate(float measured_value, float limit_value) {
     float calculated_value = 0;
     calculated_value = limit_value - measured_value;
-        if (measured_value < 0) {
-            printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
-        } /*else {
-            if (calculated_value < 0) {
-                printf("%f, Too many minerals. Water needs to be replaced!\n", calculated_value);
-            } else if (calculated_value == 0) {
-                printf("Nothing needs to be added\n");
-            } else {
-                printf("%f needs to be added\n", calculated_value);
-            }
-        }*/
+    /* if (measured_value < 0) {
+         printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
+     } /*else
+         if (calculated_value < 0) {
+             printf("%f, Too many minerals. Water needs to be replaced!\n", calculated_value);
+         } else if (calculated_value == 0) {
+             printf("Nothing needs to be added\n");
+         } else {
+             printf("%f needs to be added\n", calculated_value);
+         }
+     }*/
     return calculated_value;
 }
-
 void data_to_file(struct input minerals[20], int data_width) {
     FILE *fpt = fopen("calculated_data.csv", "w+");
     fprintf(fpt, "Name; ");
