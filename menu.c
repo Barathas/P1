@@ -1,12 +1,11 @@
 //
 // Created by Daniel on 06-12-2021.
 //
-
 #include "menu.h"
-
 
 int interface () {
     int scan = 0;
+    int size_submenu = 0;
     int amount_menu = 0;
     int i = 0;
     int amount_files = 0;
@@ -39,8 +38,7 @@ int interface () {
         }
     }
     fclose(fp);
-
-
+    //loading the file names into struc
     for (int i = 0; i < amount_files; i++) {
         //printf("%s",currentDir);
         char filename[100];
@@ -51,11 +49,10 @@ int interface () {
         strcat(strcat(filepath, "/"), filename);
         strcpy(menu[i].file_name, filepath);
     }
+    //printing file paths
     for (int j = 0; j < amount_files; j++) {
         printf("path file %d:  %s\n", j + 1, menu[j].file_name);
     }
-
-
     //for (int j = 0; j < amount_files; j++) {
     //int i = 0;
     FILE *fp2 = fopen(menu[0].file_name, "r");
@@ -127,10 +124,11 @@ int interface () {
     }
     for (int j = 0; j < amount_submenu; j++) {
         printf("[%d] %s\n", j + 1, menu[j].sub_menu);
+        size_submenu = j+1;
     }
+    printf("[%d] Back\n",size_submenu+1);
+
 }
-
-
 
 
 //
