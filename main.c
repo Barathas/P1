@@ -10,8 +10,9 @@ int main(){
     data_setup();
     int data_width = 0;
     int config_width = 0;
+    float amount_of_water;
     mineral minerals[20];
-    int produce = interface();
+    //int produce = interface();
     FILE *pt1 = fopen("data.csv", "r");
     if (!pt1)
         printf("Can't open file \n");
@@ -71,11 +72,13 @@ int main(){
         printf("Theres is more data in the config or the data file");
         return 0;
     }
+    printf("Insert amount of water in L\n");
+    scanf(" %f", &amount_of_water);
     //config_update(scan);
-    //printf("int %d\n",data_width);
+    //printf("int %d\n",data_width)
     for (int i = 0; i < data_width; i++) {
         //printf("test %f\n",minerals[i].measured_value);
-        minerals[i].calculated_value = calculate(minerals[i].measured_value, minerals[i].limit_value);
+        minerals[i].calculated_value = amount_of_water * (minerals[i].limit_value - minerals[i].measured_value);
         //printf("Calculated %f\n",minerals[i].calculated_value);
     }
     data_to_file(minerals, data_width);
