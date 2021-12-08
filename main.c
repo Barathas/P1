@@ -5,6 +5,7 @@
 #include "menu.h"
 
 int main(){
+    //printf("test0");
     config_setup();
     data_setup();
     int data_width = 0;

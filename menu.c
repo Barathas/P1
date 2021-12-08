@@ -43,8 +43,6 @@ int interface () {
         //printf("%s",currentDir);
         char filename[100];
         strcpy(filename, menu[i].file_name);
-        const unsigned MAX_LENGTH = 256;
-        char buffer[MAX_LENGTH];
         strcpy(filepath, currentDir);
         strcat(strcat(filepath, "/"), filename);
         strcpy(menu[i].file_name, filepath);
@@ -127,7 +125,6 @@ int interface () {
         size_submenu = j+1;
     }
     printf("[%d] Back\n",size_submenu+1);
-
 }
 
 
