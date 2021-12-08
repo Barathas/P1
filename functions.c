@@ -49,7 +49,9 @@ void modify_config(struct input minerals[20], int data_width) {
 }
 float calculate(float measured_value, float limit_value) {
     float calculated_value = 0;
-    calculated_value = limit_value - measured_value;
+    float amount_of_water;
+    scanf("please write amount og water in L: %f", &amount_of_water);
+    calculated_value = (limit_value - measured_value) * amount_of_water;
     /* if (measured_value < 0) {
          printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
      } /*else
