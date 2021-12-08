@@ -4,6 +4,7 @@
 #include "string.h"
 #include "unistd.h"
 #include "limits.h"
+#include "stdbool.h"
 
 struct menu{
     char file_name[1024];
