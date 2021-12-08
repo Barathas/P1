@@ -6,13 +6,12 @@
 
 int main(){
     //printf("test0");
-    config_setup();
+    //config_setup();
     data_setup();
     int data_width = 0;
     int config_width = 0;
     float amount_of_water;
     mineral minerals[20];
-    int produce = interface();
     FILE *pt1 = fopen("data.csv", "r");
     if (!pt1)
         printf("Can't open file \n");
@@ -39,9 +38,33 @@ int main(){
         }
         fclose(pt1);
     }
+    int produce = interface(minerals, data_width);
+    char buff[PATH_MAX] = "";
+    FILE *producefile = fopen(strcat(getcwd(buff, PATH_MAX),"/menufiles/produce.csv"), "r");
+    if (!producefile)
+        printf("Error: could not open file %s\n", buff);
+    else {
+        char buffer[1024];
+        int row = 0;
+        while (fgets(buffer, 1024, producefile)) {
+            row++;
+            int i = 0;
+            char *value = strtok(buffer, ";");
+            if (row == 1) {
+                while (value) {
+                    strcpy(minerals[i++].produce_name, value);
+                    value = strtok(NULL, ";");
+                    data_width = i;
+                }
+            }
+        }
+        fclose(producefile);
+    }
+
+    printf("The produce choosen is %s\n",minerals[produce].produce_name);
     //printf("int %d\n",data_width);
-    modify_config(minerals, data_width);
-    FILE *pt2 = fopen("config.csv", "r");
+    //modify_config(minerals, data_width);
+    FILE *pt2 = fopen(strcat(strcat(strcat(getcwd(buff, PATH_MAX),"/produce/"),minerals[produce].produce_name),".csv"), "r");
     if (!pt2)
         printf("Can't open file \n");
     else {
@@ -66,6 +89,11 @@ int main(){
             }
         }
         fclose(pt2);
+    }
+
+    printf("config width: %d data width %d\n",config_width, data_width);
+    for (int i = 0; i < config_width; i++) {
+        printf("config values are %d: %f \n",i,minerals[i].limit_value);
     }
     //Testing if there is the same amount of data in both files.
     if (data_width != config_width) {

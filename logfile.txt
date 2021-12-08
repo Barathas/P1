@@ -28,3 +28,29 @@ Wed Dec 08 14:53:05 2021
 (phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,1.900000,-0.200000,-1.300000,-0.400000,)
 Wed Dec 08 15:02:57 2021
 (phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,190.000000,-20.000004,-130.000000,-40.000008,)
+Wed Dec  8 17:49:46 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,38.000000,-4.000001,-26.000000,-8.000002,)
+Wed Dec  8 17:53:18 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,5.700000,-0.600000,-3.900000,-1.200000,)
+Wed Dec  8 17:55:08 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,76.000000,-8.000002,-52.000000,-16.000004,)
+Wed Dec  8 17:56:44 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,0.000000,-0.000000,-0.000000,-0.000000,)
+Wed Dec  8 17:57:12 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,-190.000000,20.000004,130.000000,40.000008,)
+Wed Dec  8 17:59:09 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,0.000000,-0.000000,-0.000000,-0.000000,)
+Wed Dec  8 18:01:39 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,1138.099976,-119.800026,-778.699951,-239.600052,)
+Wed Dec  8 18:01:55 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,60.799999,-6.400002,-41.599998,-12.800003,)
+Wed Dec  8 18:06:33 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,0.000000,-0.000000,-0.000000,-0.000000,)
+Wed Dec  8 18:20:20 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,820.799988,-86.400024,-561.599976,-172.800049,)
+Wed Dec  8 21:56:52 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,9000.000000,7999.999512,-2999.999512,-14000.000977,)
+Wed Dec  8 22:00:12 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,65.699997,95.399994,122.100006,148.799988,)
+Wed Dec  8 22:02:06 2021
+(phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,3600.000000,3199.999756,-1199.999756,-5600.000488,)

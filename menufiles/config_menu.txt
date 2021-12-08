@@ -1,1 +1,1 @@
-Edit mineral limits of produce;Create new produce
+Edit existing produce mineral limits;Creat new produce
