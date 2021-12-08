@@ -12,6 +12,7 @@ int main(){
     int config_width = 0;
     mineral minerals[20];
     int produce = interface();
+    printf("Running for produce %d\n", produce);
     FILE *pt1 = fopen("data.csv", "r");
     if (!pt1)
         printf("Can't open file \n");
