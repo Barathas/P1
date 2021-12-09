@@ -115,9 +115,11 @@ int main(){
         }
         //printf("Calculated %f\n",minerals[i].calculated_value);
     } if (negative_calculation == 1){
+        printf("End of program! This water cant be used for %s",minerals[produce].produce_name);
         return 0;
     }
     data_to_file(minerals, data_width, produce);
     logfile_update(minerals, data_width, produce);
+    printf("calculated_data.csv was printed with the minerals to be added in mg, for the produce %s. The logfile is updated with timestamp.",minerals[produce].produce_name);
     return 0;
 }
