@@ -2,3 +2,5 @@ Thu Dec 09 14:03:18 2021
 (|produce name, cucumber|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,39.900002,198.800003,136.699997,34.599998,)
 Thu Dec 09 14:03:39 2021
 (|produce name, pinapple|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,0.900000,0.800000,-0.300000,-1.400000,)
+Thu Dec 09 15:12:44 2021
+(|produce name, pinapple|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,900.000000,799.999939,-299.999939,-1400.000122,)

@@ -9,6 +9,7 @@ int main(){
     int data_width = 0;
     int config_width = 0;
     float amount_of_water;
+    int negative_calculation = 0;
     mineral minerals[20];
     FILE *pt1 = fopen("data.csv", "r");
     if (!pt1)
@@ -110,8 +111,11 @@ int main(){
         minerals[i].calculated_value = calculate(minerals[i].measured_value,minerals[i].limit_value, amount_of_water);
         if (minerals[i].calculated_value < 0) {
             printf("ERROR with %s value\n", minerals[i].measured_name);
+            negative_calculation = 1;
         }
         //printf("Calculated %f\n",minerals[i].calculated_value);
+    } if (negative_calculation == 1){
+        return 0;
     }
     data_to_file(minerals, data_width, produce);
     logfile_update(minerals, data_width, produce);
