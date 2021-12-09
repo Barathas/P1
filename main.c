@@ -26,7 +26,7 @@ int main(){
                 while (value) {
                     strcpy(minerals[i++].measured_name, value);
                     value = strtok(NULL, ";");
-                    data_width = i - 1;
+                    data_width = i-1;
                 }
             }
             if (row == 2) {
@@ -54,7 +54,6 @@ int main(){
                 while (value) {
                     strcpy(minerals[i++].produce_name, value);
                     value = strtok(NULL, ";");
-                    data_width = i;
                 }
             }
         }
@@ -70,7 +69,7 @@ int main(){
     else {
         char buffer[1024];
         int row = 0;
-        while (fgets(buffer, 1024, pt1)) {
+        while (fgets(buffer, 1024, pt2)) {
             row++;
             int i = 0;
             char *value = strtok(buffer, ";");
@@ -78,7 +77,7 @@ int main(){
                 while (value) {
                     strcpy(minerals[i++].limit_name, value);
                     value = strtok(NULL, ";");
-                    config_width = i - 1;
+                    config_width = i-1;
                 }
             }
             if (row == 2) {
@@ -88,9 +87,9 @@ int main(){
                 }
             }
         }
+
         fclose(pt2);
     }
-
     printf("config width: %d data width %d\n",config_width, data_width);
     for (int i = 0; i < config_width; i++) {
         printf("config values are %d: %f \n",i,minerals[i].limit_value);
@@ -106,10 +105,10 @@ int main(){
     //printf("int %d\n",data_width)
     for (int i = 0; i < data_width; i++) {
         //printf("test %f\n",minerals[i].measured_value);
-        minerals[i].calculated_value = amount_of_water * (minerals[i].limit_value - minerals[i].measured_value);
+        minerals[i].calculated_value = calculate(minerals[i].measured_value,minerals[i].limit_value, amount_of_water);
         //printf("Calculated %f\n",minerals[i].calculated_value);
     }
-    data_to_file(minerals, data_width);
+    data_to_file(minerals, data_width,produce);
     logfile_update(minerals, data_width);
     return 0;
 }

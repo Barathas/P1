@@ -30,9 +30,8 @@ void config_setup() {
 void modify_config(struct input minerals[20], int data_width, char file[4096], int newfile, char producename[50]) {
     char char_scan = 0;
     float float_scan = 0;
-    FILE *config = fopen(file, "w+");
     if(newfile == 1){
-        fopen(file, "w+");
+        FILE *config = fopen(file, "w+");
         for (int i = 0; i < data_width; i++) {
             fprintf(config, "%s;", minerals[i].measured_name);
         }
@@ -41,13 +40,13 @@ void modify_config(struct input minerals[20], int data_width, char file[4096], i
             printf("What shall the limit of %s be in mg/l?\n", minerals[i].measured_name);
             scanf(" %f", &float_scan);
             fprintf(config, "%f;", float_scan);
-        }
+        }fclose(config);
     }
     else {
         printf("Do you want to modify the mineral limit values for the produce %s? Y/n\n",producename);
         scanf(" %c", &char_scan);
         if (char_scan == 'y' || char_scan == 'Y') {
-            fopen(file, "w+");
+            FILE *config = fopen(file, "w+");
             for (int i = 0; i < data_width; i++) {
                 fprintf(config, "%s;", minerals[i].measured_name);
             }
@@ -57,14 +56,13 @@ void modify_config(struct input minerals[20], int data_width, char file[4096], i
                 scanf(" %f", &float_scan);
                 fprintf(config, "%f;", float_scan);
             }
-            printf("Modification of mineral limits for the produce %s is complete!\n",producename);
+            printf("Modification of mineral limits for the produce %s is complete!\n", producename);
+            fclose(config);
         }
-    }fclose(config);
+    }
 }
-float calculate(float measured_value, float limit_value) {
+float calculate(float measured_value, float limit_value, float amount_of_water) {
     float calculated_value = 0;
-    float amount_of_water;
-    scanf("please write amount og water in L: %f", &amount_of_water);
     calculated_value = (limit_value - measured_value) * amount_of_water;
     /* if (measured_value < 0) {
          printf("ERROR, MEASURED DATA CANNOT BE NEGATIVE\n");
@@ -79,9 +77,9 @@ float calculate(float measured_value, float limit_value) {
      }*/
     return calculated_value;
 }
-void data_to_file(struct input minerals[20], int data_width) {
+void data_to_file(struct input minerals[20], int data_width, int produce) {
     FILE *fpt = fopen("calculated_data.csv", "w+");
-    fprintf(fpt, "Name; ");
+    fprintf(fpt, "Name - %s; ", minerals[produce].produce_name);
     for (int i = 0; i < data_width; i++) {
         fprintf(fpt, "%s;", minerals[i].measured_name);
     } fprintf(fpt, "\nMeasured values; ");

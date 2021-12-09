@@ -5,7 +5,6 @@
 #include "functions.h"
 
 int interface (struct input minerals[20], int data_width) {
-    char latestfile[PATH_MAX] = "/produce/latest.txt";
     int produce_number = 0;
     int scan = 0;
     int subscan = 0;
@@ -16,13 +15,13 @@ int interface (struct input minerals[20], int data_width) {
     int amount_config = 0;
     int amount_submenu = 0;
     int size_submenu = 0;
-    bool produce_bool = true;
     char buff[PATH_MAX] = "";
     char foldername[PATH_MAX] = "/menufiles";
     char *currentDir = getcwd(buff, PATH_MAX);
     char rootfilename[PATH_MAX] = "/menu_files.txt";
     char filepath[PATH_MAX];
     char latestfilepath[PATH_MAX];
+    char latestfile[PATH_MAX] = "/produce/latest.txt";
     strcpy(filepath, currentDir);
     strcpy(latestfilepath, strcat(filepath, latestfile));
     strcpy(filepath, currentDir);
@@ -61,15 +60,14 @@ int interface (struct input minerals[20], int data_width) {
             }
         }
         fclose(fp);
-        //loading the file names into struc
+        //converting filename to complete filepath in struct
         for (int i = 0; i < amount_files; i++) {
-            char foldername[PATH_MAX] = "/menufiles";
+            char foldername[PATH_MAX] = "/menufiles/";
             //printf("%s",currentDir);
             char filename[100];
             strcpy(filename, menu[i].file_name);
             strcpy(filepath, currentDir);
-            strcat(filepath, foldername);
-            strcat(strcat(filepath, "/"), filename);
+            strcat(filepath, strcat(foldername,filename));
             strcpy(menu[i].file_name, filepath);
         }
         //printing file paths
@@ -79,8 +77,8 @@ int interface (struct input minerals[20], int data_width) {
         //for (int j = 0; j < 2; j++) {
         //int i = 0;
         FILE *fp2 = fopen(menu[0].file_name, "r");
-        if (!fp)
-            printf("Error: could not open file %s", filepath);
+        if (!fp2)
+            printf("Error: could not open file %s", menu[0].file_name);
         else {
             const unsigned MAX_LENGTH = 256;
             char buffer[MAX_LENGTH];
@@ -94,9 +92,9 @@ int interface (struct input minerals[20], int data_width) {
                     amount_menu = i;
                 }
             }
-        }
-        FILE *produce = fopen(menu[2].file_name, "r");
-            if (!fp)
+        } fclose(fp2);
+       /* FILE *produce = fopen(menu[2].file_name, "r");
+            if (!produce)
                 printf("Error: could not open file %s", filepath);
             else {
                 const unsigned MAX_LENGTH = 256;
@@ -128,11 +126,28 @@ int interface (struct input minerals[20], int data_width) {
                             value = strtok(NULL, ";");
                             amount_menu = i;
                         }
-                    }*/
-            }
-            fclose(fp2);
-            fclose(produce);
-        while (subscan > 0 || subscan < amount_submenu + 1 || subscan == 0 /*|| produce_bool*/) {
+                    }
+            }*/
+
+           // fclose(produce);
+        while (subscan > 0 || subscan < amount_submenu + 1 || subscan == 0) {
+            FILE *produce = fopen(menu[2].file_name, "r");
+            if (!produce)
+                printf("Error: could not open file %s", menu[2].file_name);
+            else {
+                const unsigned MAX_LENGTH = 256;
+                char buffer[MAX_LENGTH];
+                while (fgets(buffer, MAX_LENGTH, produce)) {
+                    int i = 0;
+                    char *value = strtok(buffer, ";");
+                    //if (j == 0){
+                    while (value) {
+                        strcpy(menu[i++].produce_name, value);
+                        value = strtok(NULL, ";");
+                        amount_produce = i;
+                    }
+                }
+                fclose(produce);
             subscan = 0;
             for (int j = 0; j < amount_menu; j++) {
                 if (j == 0) {
@@ -155,7 +170,7 @@ int interface (struct input minerals[20], int data_width) {
             printf("%s menu\n", menu[scan - 1].main_name);
             FILE *fp3 = fopen(menu[scan].file_name, "r");
             if (!fp3)
-                printf("Error: could not open file %s", filepath);
+                printf("Error: could not open file %s", menu[scan].file_name);
             else {
                 const unsigned MAX_LENGTH = 256;
                 char buffer[MAX_LENGTH];
@@ -171,7 +186,6 @@ int interface (struct input minerals[20], int data_width) {
             }
             for (int j = 0; j < amount_submenu; j++) {
                 printf("[%d] %s\n", j + 1, menu[j].sub_menu);
-                size_submenu = j + 1;
             }
             printf("[%d] Back\n", amount_submenu + 1);
             while (subscan < 0 || subscan > amount_submenu + 1 || subscan == 0) {
@@ -200,7 +214,6 @@ int interface (struct input minerals[20], int data_width) {
                     }
                     printf("You have choosen %s\n",menu[scan-1].produce_name);
                     char producefolder[PATH_MAX] = "/produce/";
-                    char producepath[4096];
                     strcpy(filepath,currentDir);
                     int newfile = 0;
                     modify_config(minerals,data_width,strcat(filepath,strcat(strcat(producefolder,menu[scan-1].produce_name),".csv")),newfile,menu[scan-1].produce_name);
@@ -232,6 +245,7 @@ int interface (struct input minerals[20], int data_width) {
             }
         }
     }
+}
 
 
 

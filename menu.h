@@ -4,7 +4,6 @@
 #include "string.h"
 #include "unistd.h"
 #include "limits.h"
-#include "stdbool.h"
 #include "stdlib.h"
 #include "functions.h"
 
