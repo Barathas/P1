@@ -5,8 +5,6 @@
 #include "menu.h"
 
 int main(){
-    //printf("test0");
-    //config_setup();
     data_setup();
     int data_width = 0;
     int config_width = 0;
@@ -101,11 +99,18 @@ int main(){
     }
     printf("Insert amount of water in L\n");
     scanf(" %f", &amount_of_water);
+    while (0 > amount_of_water) {
+        printf("Please insert a new valid number above 0: ");
+        scanf(" %f", &amount_of_water);
+    }
     //config_update(scan);
     //printf("int %d\n",data_width)
     for (int i = 0; i < data_width; i++) {
         //printf("test %f\n",minerals[i].measured_value);
         minerals[i].calculated_value = calculate(minerals[i].measured_value,minerals[i].limit_value, amount_of_water);
+        if (minerals[i].calculated_value < 0) {
+            printf("ERROR with %s value\n", minerals[i].measured_name);
+        }
         //printf("Calculated %f\n",minerals[i].calculated_value);
     }
     data_to_file(minerals, data_width,produce);
