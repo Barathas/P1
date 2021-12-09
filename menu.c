@@ -212,7 +212,7 @@ int interface (struct input minerals[20], int data_width) {
                         if (scan < 0 || scan > amount_produce || scan == 0)
                             printf("That number is not part of the menu, try again");
                     }
-                    printf("You have choosen %s\n",menu[scan-1].produce_name);
+                    printf("You have chosen %s\n",menu[scan-1].produce_name);
                     char producefolder[PATH_MAX] = "/produce/";
                     strcpy(filepath,currentDir);
                     int newfile = 0;

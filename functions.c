@@ -89,13 +89,15 @@ void data_to_file(struct input minerals[20], int data_width, int produce) {
     } fprintf(fpt, "\n");
     fclose(fpt);
 }
-void logfile_update(struct input minerals[20], int data_width){
+void logfile_update(struct input minerals[20], int data_width, int produce){
     FILE *logfile = fopen("logfile.txt", "a");
     time_t raw_time;
     struct tm * time_info;
     time ( &raw_time );
     time_info = localtime ( &raw_time );
     fprintf(logfile, "%s(", asctime (time_info));
+    fprintf(logfile, "|produce name, %s", minerals[produce].produce_name);
+    fprintf(logfile, "|Measured values, ");
     for (int i = 0; i < data_width; i++) {
         fprintf(logfile, "%s,",minerals[i].measured_name);
     } fprintf(logfile, "|Measured values,");

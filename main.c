@@ -113,7 +113,7 @@ int main(){
         }
         //printf("Calculated %f\n",minerals[i].calculated_value);
     }
-    data_to_file(minerals, data_width,produce);
-    logfile_update(minerals, data_width);
+    data_to_file(minerals, data_width, produce);
+    logfile_update(minerals, data_width, produce);
     return 0;
 }
