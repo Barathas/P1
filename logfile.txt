@@ -4,9 +4,13 @@ Thu Dec 09 14:03:39 2021
 (|produce name, pinapple|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,0.900000,0.800000,-0.300000,-1.400000,)
 Thu Dec 09 15:12:44 2021
 (|produce name, pinapple|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,900.000000,799.999939,-299.999939,-1400.000122,)
+Thu Dec 09 15:24:18 2021
+(|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,3990.000000,19880.000000,27670.000000,13460.000000,3550.000000,)
 Thu Dec  9 15:19:30 2021
 (|produce name, salad|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,87600.000000,127200.000000,162800.000000,198400.000000,)
 Thu Dec  9 15:21:59 2021
 (|produce name, salad|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,87600.000000,127200.000000,162800.000000,198400.000000,)
 Thu Dec  9 15:23:35 2021
 (|produce name, salad|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,87600.000000,127200.000000,162800.000000,198400.000000,)
+Thu Dec 09 15:27:47 2021
+(|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,3990.000000,19880.000000,27670.000000,13460.000000,3550.000000,)
