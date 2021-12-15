@@ -26,7 +26,9 @@ int interface (struct input minerals[20], int data_width) {
     strcpy(latestfilepath, strcat(filepath, latestfile));
     strcpy(filepath, currentDir);
     strcat(filepath, strcat(foldername, rootfilename));
-    printf("%s", filepath);
+    //printf("%s", filepath);
+
+    printf("Hydroponics water configurator 4000!!!\n\n");
 
     FILE *latest = fopen(latestfilepath, "r");
     if (!latest)
@@ -71,9 +73,9 @@ int interface (struct input minerals[20], int data_width) {
             strcpy(menu[i].file_name, filepath);
         }
         //printing file paths
-        for (int j = 0; j < amount_files; j++) {
-            printf("path file %d:  %s\n", j + 1, menu[j].file_name);
-        }
+        /*for (int j = 0; j < amount_files; j++) {
+            printf("\n path file %d:  %s", j + 1, menu[j].file_name);
+        }*/
         //for (int j = 0; j < 2; j++) {
         //int i = 0;
         FILE *fp2 = fopen(menu[0].file_name, "r");
@@ -140,7 +142,6 @@ int interface (struct input minerals[20], int data_width) {
                 while (fgets(buffer, MAX_LENGTH, produce)) {
                     int i = 0;
                     char *value = strtok(buffer, ";");
-                    //if (j == 0){
                     while (value) {
                         strcpy(menu[i++].produce_name, value);
                         value = strtok(NULL, ";");

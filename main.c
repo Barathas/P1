@@ -44,31 +44,24 @@ int main(){
         printf("Error: could not open file %s\n", buff);
     else {
         char buffer[1024];
-        int row = 0;
         while (fgets(buffer, 1024, producefile)) {
-            row++;
             int i = 0;
             char *value = strtok(buffer, ";");
-            if (row == 1) {
                 while (value) {
                     strcpy(minerals[i++].produce_name, value);
                     value = strtok(NULL, ";");
                 }
-            }
         }
         fclose(producefile);
     }
-
     printf("The produce choosen is %s\n",minerals[produce].produce_name);
-    //printf("int %d\n",data_width);
-    //modify_config(minerals, data_width);
-    FILE *pt2 = fopen(strcat(strcat(strcat(getcwd(buff, PATH_MAX),"/produce/"),minerals[produce].produce_name),".csv"), "r");
-    if (!pt2)
+    FILE *select_produce = fopen(strcat(strcat(strcat(getcwd(buff, PATH_MAX),"/produce/"),minerals[produce].produce_name),".csv"), "r");
+    if (!select_produce)
         printf("Can't open file \n");
     else {
         char buffer[1024];
         int row = 0;
-        while (fgets(buffer, 1024, pt2)) {
+        while (fgets(buffer, 1024, select_produce)) {
             row++;
             int i = 0;
             char *value = strtok(buffer, ";");
@@ -86,8 +79,7 @@ int main(){
                 }
             }
         }
-
-        fclose(pt2);
+        fclose(select_produce);
     }
     printf("config width: %d data width %d\n",config_width, data_width);
     for (int i = 0; i < config_width; i++) {
@@ -109,17 +101,17 @@ int main(){
     for (int i = 0; i < data_width; i++) {
         //printf("test %f\n",minerals[i].measured_value);
         minerals[i].calculated_value = calculate(minerals[i].measured_value,minerals[i].limit_value, amount_of_water);
+        amount_of_water += (minerals[i].calculated_value/1000000);
         if (minerals[i].calculated_value < 0) {
             printf("ERROR with %s value\n", minerals[i].measured_name);
             negative_calculation = 1;
         }
-        //printf("Calculated %f\n",minerals[i].calculated_value);
     } if (negative_calculation == 1){
         printf("End of program! This water cant be used for %s",minerals[produce].produce_name);
         return 0;
     }
     data_to_file(minerals, data_width, produce);
     logfile_update(minerals, data_width, produce);
-    printf("calculated_data.csv was printed with the minerals to be added in mg, for the produce %s. The logfile is updated with timestamp.",minerals[produce].produce_name);
+    printf("calculated_data.csv was printed with the minerals to be added in mg, for the produce %s. The file is located in %s. The logfile is updated with timestamp.",minerals[produce].produce_name,strcat(getcwd(buff, PATH_MAX),"/calculated_data.csv"));
     return 0;
 }

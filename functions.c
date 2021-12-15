@@ -1,6 +1,5 @@
 #include "functions.h"
-#include <stdio.h>
-#include <time.h>
+
 void data_setup() {
     char scan = 0;
     FILE *data = fopen("data.csv", "r+");

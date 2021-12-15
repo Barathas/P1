@@ -14,3 +14,17 @@ Thu Dec  9 15:23:35 2021
 (|produce name, salad|Measured values, phosphorus,nitrate,potassium,pH,|Measured values,0.100000,1.200000,3.300000,5.400000,|Added values,87600.000000,127200.000000,162800.000000,198400.000000,)
 Thu Dec 09 15:27:47 2021
 (|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,3990.000000,19880.000000,27670.000000,13460.000000,3550.000000,)
+Thu Dec  9 20:28:57 2021
+(|produce name, salad|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,9980.000000,11760.000000,13339.999023,14920.000000,17100.000000,)
+Thu Dec  9 20:31:47 2021
+(|produce name, salad|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,9980.000000,11760.586914,13341.449219,14922.616211,17104.275391,)
+Tue Dec 14 15:54:25 2021
+(|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,15960.000977,79523.171875,110706.429688,53867.757812,14609.492188,)
+Tue Dec 14 15:56:47 2021
+(|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,7980.000488,39761.585938,55353.214844,26933.878906,7304.746094,)
+Tue Dec 14 15:58:18 2021
+(|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,7980.000488,39761.585938,55353.214844,26933.878906,7304.746094,)
+Tue Dec 14 16:01:57 2021
+(|produce name, strawberry|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,4980.000000,9760.242188,29342.162109,11922.626953,3100.867920,)
+Tue Dec 14 16:02:34 2021
+(|produce name, strawberry|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,4980.000000,9760.242188,29342.162109,11922.626953,3100.867920,)

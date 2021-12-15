@@ -1,6 +1,7 @@
 #ifndef P1_FUNCTIONS_H
 #define P1_FUNCTIONS_H
-
+#include <stdio.h>
+#include <time.h>
 
 struct input{
     char measured_name[50]; //Mineral name for the measured value
