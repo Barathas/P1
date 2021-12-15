@@ -5,7 +5,11 @@
 #include "menu.h"
 
 int main(){
-    data_setup();
+    int data;
+    data  = data_setup();
+    if(data){
+        return 40;
+    }
     int data_width = 0;
     int config_width = 0;
     float amount_of_water;
@@ -37,7 +41,7 @@ int main(){
         }
         fclose(pt1);
     }
-    int produce = interface(minerals, data_width);
+    int produce = interface(minerals, data_width);//menu
     char buff[PATH_MAX] = "";
     FILE *producefile = fopen(strcat(getcwd(buff, PATH_MAX),"/menufiles/produce.csv"), "r");
     if (!producefile)
@@ -54,10 +58,10 @@ int main(){
         }
         fclose(producefile);
     }
-    printf("The produce choosen is %s\n",minerals[produce].produce_name);
+    printf("The produce choosen is %s\n\n",minerals[produce].produce_name);
     FILE *select_produce = fopen(strcat(strcat(strcat(getcwd(buff, PATH_MAX),"/produce/"),minerals[produce].produce_name),".csv"), "r");
     if (!select_produce)
-        printf("Can't open file \n");
+        printf("Error: could not open file %s\n", buff);
     else {
         char buffer[1024];
         int row = 0;
@@ -81,25 +85,23 @@ int main(){
         }
         fclose(select_produce);
     }
-    printf("config width: %d data width %d\n",config_width, data_width);
+
     for (int i = 0; i < config_width; i++) {
-        printf("config values are %d: %f \n",i,minerals[i].limit_value);
+        printf("The limit for %s is: %.2f mg/L \n",minerals[i].measured_name,minerals[i].limit_value);
     }
     //Testing if there is the same amount of data in both files.
     if (data_width != config_width) {
         printf("Theres is more data in the config or the data file");
-        return 0;
+        return 1;
     }
-    printf("Insert amount of water in L\n");
+    printf("Insert amount of water in liter\n");
     scanf(" %f", &amount_of_water);
     while (0 > amount_of_water) {
         printf("Please insert a new valid number above 0: ");
         scanf(" %f", &amount_of_water);
     }
-    //config_update(scan);
     //printf("int %d\n",data_width)
     for (int i = 0; i < data_width; i++) {
-        //printf("test %f\n",minerals[i].measured_value);
         minerals[i].calculated_value = calculate(minerals[i].measured_value,minerals[i].limit_value, amount_of_water);
         amount_of_water += (minerals[i].calculated_value/1000000);
         if (minerals[i].calculated_value < 0) {
@@ -107,8 +109,8 @@ int main(){
             negative_calculation = 1;
         }
     } if (negative_calculation == 1){
-        printf("End of program! This water cant be used for %s",minerals[produce].produce_name);
-        return 0;
+        printf("End of program! WARNING! This water cant be used for %s",minerals[produce].produce_name);
+        return -1;
     }
     data_to_file(minerals, data_width, produce);
     logfile_update(minerals, data_width, produce);

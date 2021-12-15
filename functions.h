@@ -2,6 +2,7 @@
 #define P1_FUNCTIONS_H
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 
 struct input{
     char measured_name[50]; //Mineral name for the measured value
@@ -13,12 +14,10 @@ struct input{
 };
 typedef struct input mineral;
 
-void config_setup();
-void data_setup ();
-void config_update(char scan);
+
+int data_setup ();
 void modify_config(struct input minerals[20], int data_width, char file[4096], int newfile, char producename[50]);
 float calculate(float measured_value, float limit_value, float amount_of_water);
-void load_config(struct input minerals[20],int config_width);
 void data_to_file(struct input minerals[20], int data_width, int produce);
 void logfile_update(struct input minerals[20], int data_width, int produce);
 

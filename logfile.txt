@@ -28,3 +28,7 @@ Tue Dec 14 16:01:57 2021
 (|produce name, strawberry|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,4980.000000,9760.242188,29342.162109,11922.626953,3100.867920,)
 Tue Dec 14 16:02:34 2021
 (|produce name, strawberry|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,4980.000000,9760.242188,29342.162109,11922.626953,3100.867920,)
+Wed Dec 15 11:06:11 2021
+(|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,3990.000244,19880.792969,27676.607422,13466.939453,3652.373047,)
+Wed Dec 15 11:15:44 2021
+(|produce name, rucula|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,980.000000,1160.005737,99341.062500,10925.540039,100.056198,)

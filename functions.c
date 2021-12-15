@@ -1,30 +1,12 @@
 #include "functions.h"
-
-void data_setup() {
-    char scan = 0;
+ int data_setup() {
+    char scan[1024];
     FILE *data = fopen("data.csv", "r+");
     if (!data) {
-        printf("Can't open data.csv\n");
-        printf("Do you want to create a new data.csv file? Y/n\n");
-        scanf(" %c", &scan);
-        if (scan == 'y' || scan == 'Y') {
-            fopen("data.csv", "w+");
-            printf("data.csv has been created\n");
-        }
-    }
-}
-void config_setup() {
-    char scan = 0;
-    FILE *config = fopen("config.csv", "r+");
-    if (!config) {
-        printf("Can't open config.csv\n");
-        printf("Do you want to create a new config.csv file? Y/n\n");
-        scanf(" %c", &scan);
-        if (scan == 'y' || scan == 'Y') {
-            fopen("config.csv", "w+");
-            printf("config.csv has been created\n");
-        }
-    }
+        printf("data.csv does not exist, please upload the file to this location %s\n",getcwd(scan,1024));
+        return 1;
+    }else
+        return 0;
 }
 void modify_config(struct input minerals[20], int data_width, char file[4096], int newfile, char producename[50]) {
     char char_scan = 0;
