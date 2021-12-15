@@ -159,14 +159,14 @@ int interface (struct input minerals[20], int data_width) {
                 printf("[%d] %s\n", j + 1, menu[j].main_name);
             }
             while (scan < 0 || scan > amount_menu || scan == 0) {
-                printf("\n What sub menu do you want to enter, choose from 1 to %d\n ", amount_menu);
+                printf("\n What submenu do you want to enter? Choose from 1 to %d\n ", amount_menu);
                 scanf(" %d", &scan);
                 if (scan == 1) {
                     FILE *latest = fopen(latestfilepath, "w");
                     fprintf(latest, "%d", produce_number);
                     return produce_number;
                 } else if (scan < 0 || scan > amount_menu || scan == 0)
-                    printf("That number is not part of the menu, try again");
+                    printf("That number is not part of the menu, try again.");
             }
             printf("%s menu\n", menu[scan - 1].main_name);
             FILE *fp3 = fopen(menu[scan].file_name, "r");
@@ -190,10 +190,10 @@ int interface (struct input minerals[20], int data_width) {
             }
             printf("[%d] Back\n", amount_submenu + 1);
             while (subscan < 0 || subscan > amount_submenu + 1 || subscan == 0) {
-                printf("What do you want to do, choose from 1 to %d\n ", amount_submenu + 1);
+                printf("What do you want to do? Choose from 1 to %d\n ", amount_submenu + 1);
                 scanf(" %d", &subscan);
                 if (subscan < 0 || subscan > amount_submenu + 1 || subscan == 0)
-                    printf("That number is not part of the menu, try again");
+                    printf("That number is not part of the menu, try again.");
                 else if (subscan == amount_submenu + 1) {
                     scan = 0;
                     continue;
@@ -208,10 +208,10 @@ int interface (struct input minerals[20], int data_width) {
                     scan = 0;
                     printf("[%d] Back\n",amount_produce+1);
                     while (scan < 0 || scan > amount_produce || scan == 0) {
-                        printf("\n What produce do you want to edit, choose from 1 to %d\n ", amount_produce);
+                        printf("\n What produce do you want to edit? Choose from 1 to %d\n ", amount_produce);
                         scanf(" %d", &scan);
                         if (scan < 0 || scan > amount_produce || scan == 0)
-                            printf("That number is not part of the menu, try again");
+                            printf("That number is not part of the menu, try again.");
                     }
                     printf("You have chosen %s\n",menu[scan-1].produce_name);
                     char producefolder[PATH_MAX] = "/produce/";

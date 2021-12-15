@@ -58,7 +58,7 @@ int main(){
         }
         fclose(producefile);
     }
-    printf("The produce choosen is %s\n\n",minerals[produce].produce_name);
+    printf("The produce chosen is %s\n\n",minerals[produce].produce_name);
     FILE *select_produce = fopen(strcat(strcat(strcat(getcwd(buff, PATH_MAX),"/produce/"),minerals[produce].produce_name),".csv"), "r");
     if (!select_produce)
         printf("Error: could not open file %s\n", buff);
@@ -91,10 +91,10 @@ int main(){
     }
     //Testing if there is the same amount of data in both files.
     if (data_width != config_width) {
-        printf("Theres is more data in the config or the data file");
+        printf("There is either more data in the produce- or in the data file");
         return 1;
     }
-    printf("Insert amount of water in liter\n");
+    printf("Insert the amount of water you have in litres\n");
     scanf(" %f", &amount_of_water);
     while (0 > amount_of_water) {
         printf("Please insert a new valid number above 0: ");
@@ -109,11 +109,11 @@ int main(){
             negative_calculation = 1;
         }
     } if (negative_calculation == 1){
-        printf("End of program! WARNING! This water cant be used for %s",minerals[produce].produce_name);
+        printf("WARNING! End of program! This water can't be used for %s",minerals[produce].produce_name);
         return -1;
     }
     data_to_file(minerals, data_width, produce);
     logfile_update(minerals, data_width, produce);
-    printf("calculated_data.csv was printed with the minerals to be added in mg, for the produce %s. The file is located in %s. The logfile is updated with timestamp.",minerals[produce].produce_name,strcat(getcwd(buff, PATH_MAX),"/calculated_data.csv"));
+    printf("calculated_data.csv was printed with the minerals to be added in mg/L, for the produce %s. The file is located in %s. The logfile is updated with timestamp.",minerals[produce].produce_name,strcat(getcwd(buff, PATH_MAX),"/calculated_data.csv"));
     return 0;
 }

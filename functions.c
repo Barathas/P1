@@ -18,7 +18,7 @@ void modify_config(struct input minerals[20], int data_width, char file[4096], i
         }
         fprintf(config, "\n");
         for (int i = 0; i < data_width; i++) {
-            printf("What shall the limit of %s be in mg/l?\n", minerals[i].measured_name);
+            printf("What shall the limit of %s be in mg/L?\n", minerals[i].measured_name);
             scanf(" %f", &float_scan);
             fprintf(config, "%f;", float_scan);
         }fclose(config);
@@ -33,7 +33,7 @@ void modify_config(struct input minerals[20], int data_width, char file[4096], i
             }
             fprintf(config, "\n");
             for (int i = 0; i < data_width; i++) {
-                printf("What shall the limit of %s be in mg/l?\n", minerals[i].measured_name);
+                printf("What shall the limit of %s be in mg/L?\n", minerals[i].measured_name);
                 scanf(" %f", &float_scan);
                 fprintf(config, "%f;", float_scan);
             }
