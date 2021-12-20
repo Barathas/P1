@@ -32,3 +32,5 @@ Wed Dec 15 11:06:11 2021
 (|produce name, cucumber|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,3990.000244,19880.792969,27676.607422,13466.939453,3652.373047,)
 Wed Dec 15 11:15:44 2021
 (|produce name, rucula|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.100000,1.200000,3.300000,5.400000,4.500000,|Added values,980.000000,1160.005737,99341.062500,10925.540039,100.056198,)
+Mon Dec 20 19:50:59 2021
+(|produce name, Test|Measured values, phosphorus,nitrogen,potassium,calcium,magnesium,|Measured values,0.200000,1.600000,3.900000,5.100000,4.400000,|Added values,980.000000,1040.010132,910.018372,890.025940,1060.040527,)
