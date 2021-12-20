@@ -114,6 +114,6 @@ int main(){
     }
     data_to_file(minerals, data_width, produce);
     logfile_update(minerals, data_width, produce);
-    printf("calculated_data.csv was printed with the minerals to be added in mg/L, for the produce %s. The file is located in %s. The logfile is updated with timestamp.",minerals[produce].produce_name,strcat(getcwd(buff, PATH_MAX),"/calculated_data.csv"));
+    printf("calculated_data.csv was printed with the minerals to be added in mg, for the produce %s. The file is located in %s. The logfile is updated with timestamp.",minerals[produce].produce_name,strcat(getcwd(buff, PATH_MAX),"/calculated_data.csv"));
     return 0;
 }
